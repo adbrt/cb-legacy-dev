@@ -36,3 +36,9 @@ And thanks to wxWidgets, which miraculously can work with Win32s-extended Window
 ![Win 3.11 sample](docs/w31.jpg)
 ![Win 3.11 video player](docs/w31vid.jpg)
 ![Win 95 sample](docs/w95.jpg)
+
+**Built apps running on real hardware:**
+![Win 3.11](docs/real1.jpg)
+
+![Cross-platform](docs/real2.jpg)
+Note: currently non-Windows targets need to be built manually on separate machines
