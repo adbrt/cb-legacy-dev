@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="vidplay" />
+		<Option pch_mode="2" />
+		<Option compiler="bcc" />
+		<Build>
+			<Target title="Win32s">
+				<Option output="bin/Win32s/vidplay" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Win32s/" />
+				<Option type="0" />
+				<Option compiler="bcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-w" />
+					<Add option="-tWM" />
+					<Add option="-a8" />
+					<Add option="-O2" />
+					<Add option="-q" />
+					<Add option="-c" />
+					<Add option="-P" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DNDEBUG" />
+					<Add directory="$(#wx28)/include" />
+					<Add directory="$(#wx28)/lib/bcc_lib/msw" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#wx28)/include" />
+					<Add directory="$(#wx28)/lib/bcc_lib/msw" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-Tpe" />
+					<Add option="-aa" />
+					<Add library="import32.lib" />
+					<Add library="cw32mt.lib" />
+					<Add library="ole2w32.lib" />
+					<Add library="wxmsw28.lib" />
+					<Add library="wxpng.lib" />
+					<Add library="wxjpeg.lib" />
+					<Add library="wxtiff.lib" />
+					<Add library="wxzlib.lib" />
+					<Add library="wxregex.lib" />
+					<Add library="wxexpat.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="comctl32.lib" />
+					<Add library="wsock32.lib" />
+					<Add directory="$(#wx28)/lib/bcc_lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add after='$(CMD_CP) &quot;$(PROJECT_DIR)\video.avi&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)\video.avi&quot;' />
+					<Add after='$(CMD_CP) &quot;$(PROJECT_DIR)\video.mpg&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)\video.mpg&quot;' />
+				</ExtraCommands>
+			</Target>
+			<Target title="W95wx3U">
+				<Option output="bin/W95wx3U/vidplay" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/W95wx3U/" />
+				<Option object_output="obj/W95wx3U/" />
+				<Option type="0" />
+				<Option compiler="tdm-gcc_471_32bit" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option="-D__GNUWIN32__" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DwxDEBUG_LEVEL=0" />
+					<Add directory="$(#wx30)/include" />
+					<Add directory="$(#wx30)/lib/gcc_lib/mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add option="-DwxUSE_DPI_AWARE_MANIFEST=2" />
+					<Add directory="$(#wx30)/include" />
+					<Add directory="$(#wx30)/lib/gcc_lib/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-mthreads" />
+					<Add library="libwxmsw30u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxjpeg.a" />
+					<Add library="libwxtiff.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxregexu.a" />
+					<Add library="libwxscintilla.a" />
+					<Add library="libwxexpat.a" />
+					<Add library="libunicows.a" />
+					<Add library="libkernel32.a" />
+					<Add library="libuser32.a" />
+					<Add library="libgdi32.a" />
+					<Add library="libwinspool.a" />
+					<Add library="libcomdlg32.a" />
+					<Add library="libadvapi32.a" />
+					<Add library="libshell32.a" />
+					<Add library="libole32.a" />
+					<Add library="liboleaut32.a" />
+					<Add library="libuuid.a" />
+					<Add library="libcomctl32.a" />
+					<Add library="libwsock32.a" />
+					<Add directory="$(#wx30)/lib/gcc_lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add after='$(CMD_CP) &quot;$(CODEBLOCKS)\redist\unicows\unicows.dll&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)\unicows.dll&quot;' />
+					<Add after='$(CMD_CP) &quot;$(PROJECT_DIR)\video.avi&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)\video.avi&quot;' />
+					<Add after='$(CMD_CP) &quot;$(PROJECT_DIR)\video.mpg&quot; &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)\video.mpg&quot;' />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="vidplayApp.cpp" />
+		<Unit filename="vidplayApp.h" />
+		<Unit filename="vidplayMain.cpp" />
+		<Unit filename="vidplayMain.h" />
+		<Unit filename="wxsmith/vidplayframe.wxs" />
+		<Extensions>
+			<debugger>
+				<remote_debugging>
+					<options conn_type="2" additional_cmds="q" />
+				</remote_debugging>
+				<remote_debugging target="W95wx3U">
+					<options conn_type="2" additional_cmds="q" additional_shell_cmds_before='$(APPPATH)\dosboxw95\w95launcher.bat &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).exe&quot;' />
+				</remote_debugging>
+				<remote_debugging target="Win32s">
+					<options conn_type="2" additional_cmds="q" additional_shell_cmds_before='$(APPPATH)\dosboxw31\w31launcher.bat &quot;$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).exe&quot;' />
+				</remote_debugging>
+			</debugger>
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="vidplayApp.cpp" main="vidplayFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/vidplayframe.wxs" src="vidplayMain.cpp" hdr="vidplayMain.h" fwddecl="0" i18n="1" name="vidplayFrame" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

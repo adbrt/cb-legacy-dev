@@ -1,0 +1,346 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// Code::Blocks new project wizard script
+//
+// Project: Console application
+// Author:  based on original script by Yiannis Mandravellos,
+//          adjusting for DJGPP: adalbert
+//
+// Wizard scripts documentation can be found at:
+// http://wiki.codeblocks.org/index.php?title=Wizard_scripts
+//
+////////////////////////////////////////////////////////////////////////////////
+
+multi_thread_dynamic <- true; //Default to Multi-thread. For MSVC only.
+ConsoleLang <- 1; // default to C++
+WizardType  <- 0; // 0 - Project, 1 - Target
+
+//
+//------------------------------------------------------------------------------
+//
+function BeginWizard()
+{
+    local wiz_type = Wizard.GetWizardType();
+
+    if (wiz_type == wizProject)
+    {
+        // this is the text that will appear in the start (intro) page
+        local intro_msg = _T("Welcome to the new console application wizard!\n" +
+                            "This wizard will guide you to create a new console application.\n\n" +
+                            "When you 're ready to proceed, please click \"Next\"...");
+
+        // intro
+        Wizard.AddInfoPage(_T("ConsoleIntro"), intro_msg);
+        // select language
+        Wizard.AddGenericSingleChoiceListPage(_T("ConsoleLanguagePage"), _T("Please select the language you want to use."), _T("C;C++"), ConsoleLang); // select language
+        // select project name and path
+        Wizard.AddProjectPathPage();
+        // select compiler and configurations
+        Wizard.AddCompilerPage((GetCompilerFactory().GetCompilerIDByName(_T("DJGPP"))), _T("*"), true, true);
+    }
+    else if (wiz_type == wizTarget)
+    {
+        WizardType = 1;
+        local intro_msg = _T("Welcome to the new console build target wizard!\n" +
+                            "This wizard will guide you to create a new console build target.\n\n" +
+                            "When you 're ready to proceed, please click \"Next\"...");
+        Wizard.AddInfoPage(_T("ConsoleIntro"), intro_msg);
+        Wizard.AddBuildTargetPage(_T(""), false, true, (GetCompilerFactory().GetCompilerIDByName(_T("DJGPP"))), _T("*"), true);
+    }
+}
+
+
+
+
+
+
+function OnEnter_CompilerPage(forward)
+{
+    // we only care to initialize if going forward
+    if (forward)
+    {
+        // This is kind of a hack, but tries to suggest the best default compiler for given configuration
+        // Even if this function breaks, nothing terrible should happen
+        // ID_CHECKBOX1 = debug checkbox
+
+            local i = 0;
+            for (i = 0; i < 99; i++)
+            {
+                Wizard.SetComboboxSelection( _T("ID_COMBOBOX1"), i );
+                local currCompiler = Wizard.GetComboboxStringSelection( _T("ID_COMBOBOX1") );
+                if (currCompiler == _T("DJGPP")) i = 100;
+                Wizard.CheckCheckbox( _T("ID_CHECKBOX1") , false) // Disable debug, won't work anyway
+            }
+
+    }
+}
+
+function OnEnter_BuildTargetPage(forward)
+{
+    // we only care to initialize if going forward
+    if (forward)
+    {
+        // This is kind of a hack, but tries to suggest the best default compiler for given configuration
+        // Even if this function breaks, nothing terrible should happen
+        // ID_CHECKBOX1 = debug checkbox
+
+            local i = 0;
+            for (i = 0; i < 99; i++)
+            {
+                Wizard.SetComboboxSelection( _T("ID_COMBOBOX1"), i );
+                local currCompiler = Wizard.GetComboboxStringSelection( _T("ID_COMBOBOX1") );
+                if (currCompiler == _T("DJGPP")) i = 100;
+                //Wizard.CheckCheckbox( _T("ID_CHECKBOX1") , false) // Disable debug, won't work anyway
+            }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+// Function OnEnter_ConsoleLanguagePage
+//------------------------------------------------------------------------------
+function OnEnter_ConsoleLanguagePage(fwd)
+{
+    Wizard.SetListboxSelection(_T("GenericChoiceList"), ConsoleLang);
+    return true;
+}
+//------------------------------------------------------------------------------
+// Function OnLeave_ConsoleLanguagePage
+//------------------------------------------------------------------------------
+function OnLeave_ConsoleLanguagePage(fwd)
+{
+    if (fwd)
+    {
+        ConsoleLang = Wizard.GetListboxSelection(_T("GenericChoiceList"));
+    }
+    return true;
+}
+
+//
+//------------------------------------------------------------------------------
+//
+function OnLeave_CompilerPage(fwd)
+{
+    if (fwd)
+    {
+        if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvctk"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc8"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc10")))
+        {
+            local msg = _T("Wizard will setup the Project in Multi-threaded Dynamic CRT mode by default.\n\n");
+            msg = msg + _T("Click Yes to continue with Multi-threaded Dynamic CRT mode\n\n");
+            msg = msg + _T("Click No to continue with Multi-threaded Static CRT mode");
+            local thread = Message(msg, _T("Console Wizard"), wxICON_QUESTION | wxYES_NO);
+            if (thread == wxID_YES)
+                multi_thread_dynamic = true;
+            else
+                multi_thread_dynamic = false;
+        }
+    }
+    return true;
+}
+//
+//------------------------------------------------------------------------------
+//
+function GetFilesDir()
+{
+    local result;
+
+    // depending on the source type setting, return the appropriate value.
+    if (ConsoleLang == 0) // C source file
+        result = _T("console/c");
+    else // C++ source file
+        result = _T("console/cpp");
+
+    return result;
+}
+//
+//------------------------------------------------------------------------------
+//
+function SetupProject(project)
+{
+   
+    // NOTE: Major compiler system drawback here.
+    // Until it is redesigned to allow easier compiler settings,
+    // we have to check the compiler's ID and set options for different compilers...
+    // We make things easier for scripts, by providing a few predefined functions
+    // to setup common settings like "debug", "warnings", etc.
+    // These functions are located in <templates_path>/common_functions.script.
+    // If you add other commonly used functions or bug-fix anything in that file,
+    // please share it with us :)
+
+    // enable compiler warnings (project-wide)
+    WarningsOn(project, Wizard.GetCompilerID());
+
+    /*
+    // add additional libs for special compilers
+    if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerIDByName(), _T("bcc")))
+    {
+        project.AddLinkLib(_T("cw32mt.lib"));
+        project.AddLinkLib(_T("import32.lib"));
+    }
+    */
+
+    // We setup the targets using SetupTarget() which is conveniently called by Code::Blocks
+    // if we register this wizard as wizTarget type :)
+    // This means that this very wizard can be used both as wizProject *and* as wizTarget ;)
+
+    // Debug build target
+    local target = project.GetBuildTarget(Wizard.GetDebugName());
+    if (!IsNull(target))
+        SetupTarget(target, true);
+
+    // Release build target
+    target = project.GetBuildTarget(Wizard.GetReleaseName());
+    if (!IsNull(target))
+        SetupTarget(target, false);
+
+    //Add CPP Exception handling support
+    if (ConsoleLang == 1)
+        CppExceptionsOn(project, Wizard.GetCompilerID());
+    // all done!
+	
+	// try to open sample file in the editor
+	local mainfile = ::wxString();
+	
+	if (ConsoleLang==0) mainfile = _T("main.c");
+	else mainfile = _T("main.cpp");
+	
+	local ed = GetEditorManager().Open( Wizard.GetProjectPath() + Wizard.GetProjectName() + wxFILE_SEP_PATH + mainfile );
+	
+	/*
+	if (IsNull(ed))
+    ShowError(_T("Could not open: " + Wizard.GetProjectPath() + Wizard.GetProjectName() + wxFILE_SEP_PATH + mainfile ));
+	*/
+	
+    return true;
+}
+//
+//------------------------------------------------------------------------------
+//
+function SetupTarget(target,is_debug)
+{
+
+	
+	if (IsNull(target))
+        return false;
+
+
+		// if target wizard
+		if (WizardType == 1)
+		{
+			target.SetOptionRelation(ortCompilerOptions, orUseTargetOptionsOnly);
+			target.SetOptionRelation(ortLinkerOptions, orUseTargetOptionsOnly);
+		}
+		
+		
+		// Post-build commands to prepare exe file without dependencies
+		local pb_exe2coff = ::wxString();
+		local pb_copycw = ::wxString();
+		local pb_deltemp = ::wxString();
+		pb_exe2coff = _T("$(APPPATH)\\utils\\exe2coff.exe \"$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).exe\"");
+		pb_copycw = _T("cmd /C \"copy /B \"$(APPPATH)\\utils\\cwsdstub.exe\" + \"$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME)\" \"$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).exe\"");
+		pb_deltemp = _T("cmd /C \"del \"$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME)\"\"");
+		
+		// Post-build commands to run built exe in DOSbox
+		local pb_rundosbox = ::wxString();
+		pb_rundosbox = _T("\"$(APPPATH)\\dosboxx\\dbxlauncher.bat\" \"$(PROJECT_DIR)$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).exe\"");
+		
+		// Add post-build commands to target
+		target.AddCommandsAfterBuild(pb_exe2coff);
+		target.AddCommandsAfterBuild(pb_copycw);
+		target.AddCommandsAfterBuild(pb_deltemp);
+		target.AddCommandsAfterBuild(pb_rundosbox);
+		
+		// This will run all above on each build (prepare EXE and run test in DOSbox)
+		target.SetAlwaysRunPostBuildSteps(true);
+	
+
+		
+
+
+
+    target.SetTargetType(ttConsoleOnly);
+    // TODO (Biplab#9#): Wizard.GetProjectName() returns file extension when the wizard is of Target type. This bug needs to be fixed
+    local ProjectName = (WizardType == 0) ? Wizard.GetProjectName() : target.GetParentProject().GetTitle();
+
+    target.SetUseConsoleRunner(false);
+
+    if (is_debug)
+    {
+        local TargetName = (WizardType == 0) ? Wizard.GetDebugOutputDir() : Wizard.GetTargetOutputDir();
+        if (target.GetWorkingDir().Matches(_T("")))
+            target.SetOutputFilename(target.SuggestOutputFilename());
+        else
+            //target.SetOutputFilename(Wizard.GetDebugOutputDir() + Wizard.GetProjectName() + DOT_EXT_EXECUTABLE);
+            target.SetOutputFilename(TargetName + ProjectName + DOT_EXT_EXECUTABLE);
+
+            // enable debugging symbols for this target
+        // DebugSymbolsOn(target, Wizard.GetTargetCompilerID()); // TODO: doesn't seem to work?
+        DebugSymbolsOn(target, Wizard.GetCompilerID());
+        //Special consideration for MSVC 7.1
+        if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvctk"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc8"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc10")))
+        {
+            if (!multi_thread_dynamic)
+            {
+                target.AddCompilerOption(_T("/MTd"));
+                target.AddLinkLib(_T("libcmtd.lib"));
+                target.AddLinkLib(_T("libcpmtd.lib"));
+            }
+            else
+            {
+                target.AddCompilerOption(_T("/MDd"));
+                target.AddLinkLib(_T("msvcrtd.lib"));
+                target.AddLinkLib(_T("msvcprtd.lib"));
+            }
+        }
+    }
+    else
+    {
+        	
+		
+		local TargetName = (WizardType == 0) ? Wizard.GetReleaseOutputDir() : Wizard.GetTargetOutputDir();
+        if (target.GetWorkingDir().Matches(_T("")))
+            target.SetOutputFilename(target.SuggestOutputFilename());
+        else
+            //target.SetOutputFilename(TargetName + Wizard.GetProjectName() + DOT_EXT_EXECUTABLE);
+            target.SetOutputFilename(TargetName + ProjectName + DOT_EXT_EXECUTABLE);
+
+        // enable optimizations for this target
+        // OptimizationsOn(target, Wizard.GetTargetCompilerID()); // TODO: doesn't seem to work?
+        OptimizationsOn(target, Wizard.GetCompilerID());
+        //Special consideration for MSVC 7.1
+        if (GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvctk"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc8"))
+         || GetCompilerFactory().CompilerInheritsFrom(Wizard.GetCompilerID(), _T("msvc10")))
+        {
+            if (!multi_thread_dynamic)
+            {
+                target.AddCompilerOption(_T("/MT"));
+                target.AddLinkLib(_T("libcmt.lib"));
+                target.AddLinkLib(_T("libcpmt.lib"));
+            }
+            else
+            {
+                target.AddCompilerOption(_T("/MD"));
+                target.AddLinkLib(_T("msvcrt.lib"));
+                target.AddLinkLib(_T("msvcprt.lib"));
+            }
+        }
+    }
+
+    // all done!
+    return true;
+}

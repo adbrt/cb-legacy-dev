@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="vidplayFrame">
+		<title>Video player</title>
+		<bg>#000000</bg>
+		<minsize>-1,250</minsize>
+		<extra_code>// This code will set a smaller font if Win 3.11 is detected:&#x0A;int majorVer; int minorVer;&#x0A;wxGetOsVersion(&amp;majorVer, &amp;minorVer);&#x0A;if (minorVer == 30 || majorVer == 30 || majorVer == 3)&#x0A;{&#x0A;    wxFont thisFont(8,wxFONTFAMILY__DEFAULT,wxFONTSTYLE__NORMAL,wxFONTWEIGHT__NORMAL,false,wxEmptyString,wxFONTENCODING__DEFAULT);&#x0A;    SetFont(thisFont);&#x0A;}</extra_code>
+		<id_arg>0</id_arg>
+		<style>wxDEFAULT_FRAME_STYLE|wxFULL_REPAINT_ON_RESIZE</style>
+		<handler function="OnResize" entry="EVT_SIZE" />
+		<object class="wxBoxSizer" variable="BoxSizer1" member="no">
+			<object class="sizeritem">
+				<object class="wxBoxSizer" variable="BoxSizer3" member="no">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxBoxSizer" variable="BoxSizer4" member="no">
+							<object class="sizeritem">
+								<object class="wxBoxSizer" variable="BoxSizer5" member="no">
+									<orient>wxVERTICAL</orient>
+								</object>
+								<flag>wxALL|wxEXPAND</flag>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxPanel" name="ID_PANEL2" variable="Placeholder" member="yes">
+									<size>10,156</size>
+									<hidden>1</hidden>
+									<bg>#000000</bg>
+									<maxsize>-1,-1</maxsize>
+								</object>
+								<flag>wxALL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>1</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxBoxSizer" variable="BoxSizer6" member="no">
+							<orient>wxVERTICAL</orient>
+							<object class="sizeritem">
+								<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+									<size>406,77</size>
+									<bg>wxSYS_COLOUR_BTNFACE</bg>
+									<object class="wxButton" name="ID_BUTTON1" variable="Button1" member="yes">
+										<label>Play</label>
+										<pos>8,8</pos>
+										<size>72,32</size>
+										<handler function="OnButton1Click" entry="EVT_BUTTON" />
+									</object>
+									<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+										<label>Time</label>
+										<pos>8,48</pos>
+										<size>184,24</size>
+										<style>wxST_NO_AUTORESIZE</style>
+									</object>
+									<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextCtrl1" member="yes">
+										<value>video.avi</value>
+										<pos>224,8</pos>
+										<size>173,32</size>
+										<style>wxBORDER_SIMPLE</style>
+									</object>
+									<object class="wxButton" name="ID_BUTTON3" variable="Button3" member="yes">
+										<label>Load</label>
+										<pos>160,8</pos>
+										<size>56,32</size>
+										<handler function="OnButton3Click" entry="EVT_BUTTON" />
+									</object>
+									<object class="wxButton" name="ID_BUTTON2" variable="Button2" member="yes">
+										<label>Pause</label>
+										<pos>88,8</pos>
+										<size>64,32</size>
+										<handler function="OnButton2Click" entry="EVT_BUTTON" />
+									</object>
+								</object>
+								<flag>wxEXPAND|wxFIXED_MINSIZE</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxPanel" name="ID_PANEL3" variable="Panel2" member="yes">
+							<size>362,24</size>
+							<bg>wxSYS_COLOUR_BTNSHADOW</bg>
+							<minsize>-1,16d</minsize>
+							<object class="wxBoxSizer" variable="BoxSizer7" member="no">
+								<orient>wxVERTICAL</orient>
+								<object class="sizeritem">
+									<object class="wxSlider" name="ID_SLIDER1" variable="Slider1" member="yes">
+										<max>200</max>
+										<size>-1,10d</size>
+										<style>wxSL_BOTH|wxBORDER_SIMPLE</style>
+										<handler function="OnSlider1CmdSliderUpdated" entry="EVT_COMMAND_SLIDER_UPDATED" />
+									</object>
+									<flag>wxEXPAND</flag>
+									<option>1</option>
+								</object>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxBoxSizer" variable="BoxSizer8" member="no">
+							<orient>wxVERTICAL</orient>
+							<object class="sizeritem">
+								<object class="wxPanel" name="ID_PANEL4" variable="Panel3" member="yes">
+									<size>362,16</size>
+									<bg>wxSYS_COLOUR_BTNFACE</bg>
+								</object>
+								<flag>wxALL|wxEXPAND</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<option>2</option>
+			</object>
+		</object>
+		<object class="wxTimer" name="ID_TIMER1" variable="Timer1" member="yes">
+			<interval>66</interval>
+			<handler function="OnTimer1Trigger" entry="EVT_TIMER" />
+		</object>
+		<object class="wxTimer" name="ID_TIMER2" variable="Timer2" member="yes">
+			<oneshot>1</oneshot>
+			<handler function="OnTimer2Trigger" entry="EVT_TIMER" />
+		</object>
+	</object>
+</wxsmith>

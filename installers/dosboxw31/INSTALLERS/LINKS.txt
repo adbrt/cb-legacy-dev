@@ -1,0 +1,25 @@
+S3:
+http://web.archive.org/web/20070404005124/http://drivers.s3graphics.com/en/download/drivers/legacy/Trio64V_765/w3117004.zip
+http://web.archive.org/web/19980623182122/http://www.s3.com/bbs/764drv/w3117004.zip
+
+PW1118.exe (Win32s):
+https://web.archive.org/web/20220831184504/http://ftpmirror.your.org/pub/misc/ftp.microsoft.com/Softlib/MSLFILES/PW1118.EXE
+http://web.mit.edu/cascon/microsoft/pw1118.exe
+http://web.archive.org/web/20010430062244if_/http://web.mit.edu:80/cascon/microsoft/pw1118.exe
+
+TCP32b:
+http://web.archive.org/web/20010526175751/http://mssjus.www.conxion.com/download/wfw311/update/3.11b/wfw/en-us/tcp32b.exe
+http://web.archive.org/web/20061212121000/http://download.microsoft.com/download/wfw311/update/3.11b/wfw/en-us/tcp32b.exe
+
+WV1160 (Video for Windows)
+http://web.archive.org/web/20021016075846/http://www.ic.sunysb.edu/pub/wv1160.exe
+http://ftp.lanet.lv/ftp/windows/www/netscape3.0/wv1160.exe
+*BROKEN* web.archive.org/web/20150714132235/http://web1.toshiba.ca/support/isg/drivers/archives/files_Archive/win3x/wv1160.exe
+
+WING10
+http://web.archive.org/web/20040604045533/http://download.microsoft.com/download/platformsdk/wing/1/win98/en-us/wing10.exe
+http://ftpmirror.your.org/pub/misc/ftp.microsoft.com/Softlib/MSLFILES/WING10.EXE
+http://web.archive.org/web/20220831185005/http://ftpmirror.your.org/pub/misc/ftp.microsoft.com/Softlib/MSLFILES/WING10.EXE
+
+WMP
+http://web.archive.org/web/20011206032410/http://msdl.microsoft.com/msdownload/mplayer/3.0/b1/en/MPSetup.exe

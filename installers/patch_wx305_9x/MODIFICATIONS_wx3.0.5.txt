@@ -1,0 +1,40 @@
+Based on wxWidgets Stable Release: 3.0.5 (April 27th, 2020)
+https://www.wxwidgets.org/downloads/
+https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5/wxWidgets-3.0.5.zip
+
+Modifications to compile it for WINVER=0x0400:
+
+
+***** Added in .\src\msw\window.cpp (line 3526): *****
+// Trying to make compatible with Win 9x
+#ifndef WM_UNINITMENUPOPUP
+    #define WM_UNINITMENUPOPUP 0x0125
+#endif
+******************************************************
+
+
+***** Modified .\src\msw\checklst.cpp (line 161): *****
+#if (WINVER >= 0x0500) // Disable in builds for old Win9x versions
+    // checkmarks should not be mirrored in RTL layout
+    DWORD oldLayout = impl->GetLayoutDirection() == wxLayout_RightToLeft ? LAYOUT_RTL : 0;
+    if ( oldLayout & LAYOUT_RTL )
+        ::SetLayout(hdc, oldLayout | LAYOUT_BITMAPORIENTATIONPRESERVED);
+    wxDrawStateBitmap(hdc, hBmpCheck, x, y, uState);
+    if ( oldLayout & LAYOUT_RTL )
+        ::SetLayout(hdc, oldLayout);
+#endif
+*******************************************************
+
+
+***** Modified .\src\msw\utils.cpp (after line 1170): *****
+***** added (WINVER >= 0x0500) check for OSVERSIONINFOEX wxGetWindowsVersionInfo()
+***** code to be used only for newer Windows versions builds
+***** For 9x versions used code from 3.0.0 ***** https://github.com/wxWidgets/wxWidgets/blob/v3.0.0/src/msw/utils.cpp
+*******************************************************
+
+
+***** Modified .\src\msw\toplevel.cpp (line 1545): *****
+#if (WINVER >= 0x0500) // Disable message in builds for old Win9x versions (doesn't fix it but hides the error...)
+			wxASSERT_MSG( m_menuDepth > 0, wxS("No open menus?") );
+#endif
+*******************************************************

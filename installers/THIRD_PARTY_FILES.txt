@@ -1,0 +1,27 @@
+* WfW 3.11 and Win 95 files: you need to provide those on your own
+Installation disks of English Windows for Workgroups 3.11 (images 1-8)
+Installation CD of English Windows 95 OSR2 (WIN95 subdirectory)
+
+These files need to be downloaded by the autoinstaller or manually:
+
+* Borland BCC5.5 compiler (freecommandLinetools.exe)
+SHA256: 433B44741F07F2AD673EB936511D498C5A6B7F260F98C4D9A6DA70C41A56D855
+
+* Files required for Win 3.11 installation:
+
+Win32S PW1118.exe
+TCP32B tcp32b.exe
+Video for Windows wv1160.exe
+Windows Media Player MPSetup.exe
+WingG 1.0 wing10.exe
+S3 driver w3117004.zip
+
+* Files required for Win 95 installation:
+
+DirectX 7.0A  DX7Aeng.exe 564de93dcc50691480332e2ccb5565908760b295faa70f8c68854f69dad87189
+DCOM95 dcom95.exe 6706f79435d75682b0ce69b144108b3c344cae9f7aee7490de47aa20b4f311d3
+Year 2000 patch w95y2k.exe d3c063f2b04311ddbffd8461aa47147d6307f26d2163bef2c715cd168657aa3f
+Windows Media Player 6.4 mpfull.exe a39b2b9735cedd513fcb78f8634695d35073e9d7e865e536a0da6db38c7225e4
+Winsock 2 Update W95WS2setup.exe 48c82825328ef63bce1d471d505f0e243cae94b5b05c66cf2e51b75c6d4d4922
+3Dfx Voodoo Graphics driver vg-w9x-q3.exe afde9cfc18080ba4bd94972b783867a9c713e6df3643fef84db5da19414ceea8
+S3 Graphics driver w9521103.zip fb691c872cd7dcc00d7b9445af6d82777586e356e165d5db56f213fa81e96881

@@ -1,0 +1,124 @@
+/*
+ * This file is part of the Code::Blocks IDE and licensed under the GNU General Public License, version 3
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * $Revision: 10722 $
+ * $Id: config.script 10722 2016-01-28 14:39:15Z mortenmacfly $
+ * $HeadURL: http://svn.code.sf.net/p/codeblocks/code/branches/release-20.xx/src/plugins/scriptedwizard/resources/config.script $
+ */
+
+//
+// Main wizards configuration script.
+// Here, we register all the available wizards.
+//
+
+function RegisterWizards()
+{
+    //
+    // project wizards
+    //
+    RegisterWizard(wizProject,     _T("empty"),        _T("Empty project"),         _T("Console"));
+	
+	RegisterWizard(wizProject,     _T("wxwidgets"),    _T("wxWidgets project"),     _T("GUI"));
+	
+	RegisterWizard(wizProject,     _T("djgpp"),      _T("DJGPP DOS application (386+)"),   _T("Console"));
+	
+	RegisterWizard(wizProject,     _T("owcdos"),      _T("OpenWatcom DOS (16-bit) application"),   _T("Console"));
+	
+	RegisterWizard(wizProject,     _T("console"),      _T("Console application"),   _T("Console"));
+	
+	RegisterWizard(wizProject,     _T("staticlib"),    _T("Static library"),        _T("Console"));
+	
+    if (PLATFORM == PLATFORM_MSW)
+	{
+        RegisterWizard(wizProject, _T("win32gui"),     _T("Win32 GUI project"),     _T("GUI"));
+	    RegisterWizard(wizProject, _T("dll"),          _T("Dynamic Link Library"),  _T("Console"));
+        RegisterWizard(wizProject, _T("sys"),          _T("Kernel Mode Driver"),    _T("Native"));
+	}
+	
+	
+	/*
+	RegisterWizard(wizProject,     _T("fortran/app"),  _T("Fortran application"),   _T("Fortran"));
+    RegisterWizard(wizProject,     _T("fortran/lib"),  _T("Fortran library"),       _T("Fortran"));
+    RegisterWizard(wizProject,     _T("fortran/dll"),  _T("Fortran DLL"),           _T("Fortran"));
+    
+
+    RegisterWizard(wizProject,     _T("d"),            _T("D application"),         _T("D language"));
+    if (PLATFORM == PLATFORM_MSW)
+    {
+        RegisterWizard(wizProject, _T("directx"),      _T("Direct/X project"),      _T("2D/3D Graphics"));
+
+    }
+    RegisterWizard(wizProject,     _T("fltk"),         _T("FLTK project"),          _T("GUI"));
+    RegisterWizard(wizProject,     _T("glfw"),         _T("GLFW project"),          _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("glut"),         _T("GLUT project"),          _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("gtk"),          _T("GTK+ project"),          _T("GUI"));
+    RegisterWizard(wizProject,     _T("irrlicht"),     _T("Irrlicht project"),      _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("java"),         _T("Java application"),      _T("Java"));
+    RegisterWizard(wizProject,     _T("lf"),           _T("Lightfeather project"),  _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("matlab_csf"),   _T("Matlab project"),        _T("Console"));
+    RegisterWizard(wizProject,     _T("opencv"),       _T("OpenCV project"),        _T("Console"));
+    RegisterWizard(wizProject,     _T("opengl"),       _T("OpenGL project"),        _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("ogre"),         _T("Ogre project"),          _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("plugins"),      _T("Code::Blocks plugin"),   _T("Code::Blocks"));
+    RegisterWizard(wizProject,     _T("qt4"),          _T("QT4 project"),           _T("GUI"));
+    RegisterWizard(wizProject,     _T("qt4dll"),       _T("QT4 (shared) project"),  _T("GUI"));
+    RegisterWizard(wizProject,     _T("qt5"),          _T("QT5 project"),           _T("GUI"));
+    RegisterWizard(wizProject,     _T("sdl"),          _T("SDL project"),           _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("sdl2"),         _T("SDL2 project"),          _T("2D/3D Graphics"));
+    RegisterWizard(wizProject,     _T("sfml"),         _T("SFML project"),          _T("2D/3D Graphics"));
+    if (PLATFORM == PLATFORM_MSW)
+        RegisterWizard(wizProject, _T("smartwin"),     _T("SmartWin project"),      _T("GUI"));
+    
+    if (PLATFORM == PLATFORM_MSW)
+        RegisterWizard(wizProject, _T("stlport"),      _T("STL port application"),  _T("Console"));
+    RegisterWizard(wizProject,     _T("sharedlib"),    _T("Shared library"),        _T("Console"));
+	*/
+
+
+    //
+    // build target wizards
+    //
+    RegisterWizard(wizTarget,      _T("wxwidgets"),    _T("wxWidgets"),             _T("GUI"));
+	RegisterWizard(wizTarget,     _T("djgpp"),      _T("DJGPP DOS application (386+)"),   _T("Console"));
+	RegisterWizard(wizTarget,     _T("owcdos"),      _T("OpenWatcom DOS (16-bit) application"),   _T("Console"));
+	RegisterWizard(wizTarget,      _T("console"),      _T("Console"),               _T("Console"));
+	
+    RegisterWizard(wizTarget,      _T("staticlib"),    _T("Static library"),        _T("Console"));
+    if (PLATFORM == PLATFORM_MSW)
+        RegisterWizard(wizTarget,  _T("dll"),          _T("Dynamic Link Library"),  _T("Console"));
+    
+	/*
+    RegisterWizard(wizProject,     _T("arduino"),      _T("Arduino Project"),       _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("arm"),          _T("ARM Project"),           _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("avr"),          _T("AVR Project"),           _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("msp430"),       _T("MSP430 Project"),        _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("tricore"),      _T("TriCore Project"),       _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("ppc"),          _T("PowerPC Project"),       _T("Embedded Systems"));
+    RegisterWizard(wizProject,     _T("mcs51"),        _T("MCS51 Project"),         _T("Embedded Systems"));
+	*/
+	
+    //
+    // file wizards
+    //
+    RegisterWizard(wizFiles,       _T("empty_file"),   _T("Empty file"),            _T("C/C++"));
+    RegisterWizard(wizFiles,       _T("c_file"),       _T("C/C++ source"),          _T("C/C++"));
+    //RegisterWizard(wizFiles,       _T("d_source"),     _T("D source"),              _T("D language"));
+    RegisterWizard(wizFiles,       _T("h_file"),       _T("C/C++ header"),          _T("C/C++"));
+    //RegisterWizard(wizFiles,       _T("fortran/file"), _T("Fortran source"),        _T("Fortran"));
+    //RegisterWizard(wizFiles,       _T("java/file"),    _T("Java source"),           _T("Java"));
+}
+
+function RegisterWizard(type, folder, title, category)
+{
+    // syntax:
+    // AddWizard(type, title, category, script, template_png, wizard_png, xrc)
+
+    Wizard.AddWizard(type,
+                     title,
+                     category,
+                     folder + _T("/wizard.script"),
+                     folder + _T("/logo.png"),
+                     folder + _T("/wizard.png"),
+                     folder + _T("/wizard.xrc"));
+}

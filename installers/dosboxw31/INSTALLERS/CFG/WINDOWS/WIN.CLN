@@ -1,0 +1,167 @@
+[windows]
+spooler=yes
+load=
+run=
+Beep=yes
+NullPort=None
+device=
+BorderWidth=3
+CursorBlinkRate=530
+DoubleClickSpeed=452
+Programs=com exe bat pif
+Documents=
+DeviceNotSelectedTimeout=15
+TransmissionRetryTimeout=45
+KeyboardDelay=2
+KeyboardSpeed=31
+ScreenSaveActive=0
+ScreenSaveTimeOut=120
+
+[Desktop]
+Pattern=(None)
+TileWallPaper=0
+GridGranularity=0
+
+[Extensions]
+crd=cardfile.exe ^.crd
+trm=terminal.exe ^.trm
+txt=notepad.exe ^.txt
+ini=notepad.exe ^.ini
+pcx=pbrush.exe ^.pcx
+bmp=pbrush.exe ^.bmp
+wri=write.exe ^.wri
+rec=recorder.exe ^.rec
+hlp=winhelp.exe ^.hlp
+mmf=msmail.exe /f ^.mmf
+
+[intl]
+sLanguage=enu
+sCountry=United States
+iCountry=1
+iDate=0
+iTime=0
+iTLZero=0
+iCurrency=0
+iCurrDigits=2
+iNegCurr=0
+iLzero=1
+iDigits=2
+iMeasure=1
+s1159=AM
+s2359=PM
+sCurrency=$
+sThousand=,
+sDecimal=.
+sDate=/
+sTime=:
+sList=,
+sShortDate=M/d/yy
+sLongDate=dddd, MMMM dd, yyyy
+
+[ports]
+; A line with [filename].PRN followed by an equal sign causes
+; [filename] to appear in the Control Panel's Printer Configuration dialog
+; box. A printer connected to [filename] directs its output into this file.
+; The file must be on one of your local drives; you cannot print to a network
+; file.
+LPT1:=
+LPT2:=
+LPT3:=
+COM1:=9600,n,8,1,x
+COM2:=9600,n,8,1,x
+COM3:=9600,n,8,1,x
+COM4:=9600,n,8,1,x
+EPT:=
+FILE:=
+LPT1.DOS=
+LPT2.DOS=
+
+[FontSubstitutes]
+Helv=MS Sans Serif
+Tms Rmn=MS Serif
+Times=Times New Roman
+Helvetica=Arial
+
+[TrueType]
+
+[Sounds]
+SystemDefault=ding.wav, Default Beep
+SystemExclamation=ding.wav, Exclamation
+SystemStart=chimes.wav, Windows Start
+SystemExit=chimes.wav, Windows Exit
+SystemHand=ding.wav, Critical Stop
+SystemQuestion=ding.wav, Question
+SystemAsterisk=ding.wav, Asterisk
+RingIn=ringin.wav, Incoming Call
+RingOut=ringout.wav, Outgoing Call
+
+[mci extensions]
+wav=waveaudio
+mid=sequencer
+rmi=sequencer
+
+[Compatibility]
+NOTSHELL=0x0001
+WPWINFIL=0x0006
+CCMAIL=0x0008
+AMIPRO=0x0010
+REM=0x8022
+PIXIE=0x0040
+CP=0x0040
+JW=0x42080
+TME=0x0100
+VB=0x0200
+WIN2WRS=0x1210
+PACKRAT=0x0800
+VISION=0x0040
+MCOURIER=0x0800
+_BNOTES=0x24000
+MILESV3=0x1000
+PM4=0x2000
+DESIGNER=0x2000
+PLANNER=0x2000
+DRAW=0x2000
+WINSIM=0x2000
+CHARISMA=0x2000
+PR2=0x2000
+PLUS=0x1000
+ED=0x00010000
+APORIA=0x0100
+EXCEL=0x1000
+GUIDE=0x1000
+NETSET2=0x0100
+W4GL=0x4000
+W4GLR=0x4000
+TURBOTAX=0x00080000
+
+[winsetup]
+source_disk_path=C:\INST311
+
+[fonts]
+Arial (TrueType)=ARIAL.FOT
+Arial Bold (TrueType)=ARIALBD.FOT
+Arial Bold Italic (TrueType)=ARIALBI.FOT
+Arial Italic (TrueType)=ARIALI.FOT
+Courier New (TrueType)=COUR.FOT
+Courier New Bold (TrueType)=COURBD.FOT
+Courier New Bold Italic (TrueType)=COURBI.FOT
+Courier New Italic (TrueType)=COURI.FOT
+Times New Roman (TrueType)=TIMES.FOT
+Times New Roman Bold (TrueType)=TIMESBD.FOT
+Times New Roman Bold Italic (TrueType)=TIMESBI.FOT
+Times New Roman Italic (TrueType)=TIMESI.FOT
+WingDings (TrueType)=WINGDING.FOT
+MS Sans Serif 8,10,12,14,18,24 (VGA res)=SSERIFE.FON
+Courier 10,12,15 (VGA res)=COURE.FON
+MS Serif 8,10,12,14,18,24 (VGA res)=SERIFE.FON
+Symbol 8,10,12,14,18,24 (VGA res)=SYMBOLE.FON
+Roman (Plotter)=ROMAN.FON
+Script (Plotter)=SCRIPT.FON
+Modern (Plotter)=MODERN.FON
+Small Fonts (VGA res)=SMALLE.FON
+Symbol (TrueType)=SYMBOL.FOT
+
+[embedding]
+SoundRec=Sound,Sound,SoundRec.exe,picture
+Package=Package,Package,packager.exe,picture
+PBrush=Paintbrush Picture,Paintbrush Picture,pbrush.exe,picture

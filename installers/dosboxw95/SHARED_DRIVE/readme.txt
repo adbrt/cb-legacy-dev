@@ -1,0 +1,2 @@
+You can place here any files from the host operating system that need to be shared with Windows 95 emulated machine.
+NOTE: emulated guest machine can read these files and can write to this directory while running, but the changes will NOT be written to this directory after the machine is powered off.

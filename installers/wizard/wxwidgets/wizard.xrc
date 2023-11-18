@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc" version="2.5.3.0">
+	<object class="wxPanel" name="WxConf">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="m_staticText1">
+					<label>Please select various configuration options.&#x0A;&#x0A;What you select here, must match the installed wxWidgets&#x0A;library&apos;s settings.</label>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer">
+					<label>wxWidgets Library Settings</label>
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfDLL">
+							<label>Use wxWidgets DLL</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfMono">
+							<label>wxWidgets is built as a monolithic library</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfUni">
+							<label>Enable Unicode</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer">
+					<label>Miscellaneous Settings</label>
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxEmpty">
+							<label>Create Empty Project</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfPCH">
+							<label>Create and use precompiled header (PCH)</label>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxBoxSizer">
+							<object class="sizeritem">
+								<object class="wxStaticText" name="m_staticText2">
+									<label>Configuration:</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>8</border>
+							</object>
+							<object class="sizeritem">
+								<object class="wxTextCtrl" name="txtWxConfConfig" />
+								<flag>wxALL|wxEXPAND</flag>
+								<border>8</border>
+								<option>1</option>
+							</object>
+						</object>
+						<flag>wxEXPAND</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfAdvOpt">
+							<label>Configure Advanced Options</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="WxConfUnix">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="m_staticText1">
+					<label>Please select appropriate wxWidgets configurations.&#x0A;If you are not sure then use &quot;Use default wxWidgets&#x0A;Configuration&quot;&#x0A;&#x0A;Advanced Options are to be set carefully or&#x0A;Compilation will Fail.</label>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxRadioBox" name="m_radioBoxWxChoice">
+					<label>wxWidgets Library Settings</label>
+					<content>
+						<item>Use default wxWidgets configuration</item>
+						<item>Use Advanced options</item>
+					</content>
+					<style>wxRA_SPECIFY_COLS</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer">
+					<label>Advanced Options</label>
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfSo">
+							<label>Use Dynamic wxWidgets Lib</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxConfUnicode">
+							<label>Use Unicode build of wxWidgets</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer">
+					<label>Other Options</label>
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxUnixConfPCH">
+							<label>Create and use precompiled header (PCH)</label>
+						</object>
+						<flag>wxALL|wxEXPAND</flag>
+						<border>8</border>
+					</object>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxUnixEmpty">
+							<label>Create Empty Project</label>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="WxConfAdvOpt">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="m_staticText2">
+					<label>Please select advanced options. Some of options will work&#x0A;only with GCC</label>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="m_staticText5">
+					<label>Don&apos;t change them unless you need it.&#x0A;You may need to change some settings manually.</label>
+					<font>
+						<style>normal</style>
+						<weight>bold</weight>
+					</font>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer">
+					<label>Advanced options (GCC only)</label>
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<object class="wxCheckBox" name="chkWxDebug">
+							<label>Use __WXDEBUG__ and Debug wxWidgets lib</label>
+							<tooltip>This is available for GCC only!</tooltip>
+						</object>
+						<flag>wxALL</flag>
+						<border>8</border>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxRadioBox" name="RadioBoxDebug">
+					<label>Debug Target</label>
+					<content>
+						<item>Console Mode Application</item>
+						<item>GUI Mode Application</item>
+					</content>
+					<style>wxRA_SPECIFY_COLS</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxRadioBox" name="RadioBoxRelease">
+					<label>Release Target</label>
+					<content>
+						<item>Console Mode Application</item>
+						<item>GUI Mode Application</item>
+					</content>
+					<style>wxRA_SPECIFY_COLS</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="WxAddLib">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="LabelHeading">
+					<label>Please select additional libraries you want to add to project.&#x0A;&#x0A;Please Note that Code::Blocks will NOT check for the&#x0A;existence of any Libraries added below.</label>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxListBox" name="lstWxLibs">
+					<content>
+						<item>wxAdvanced</item>
+						<item>wxAUI</item>
+						<item>wxGL</item>
+						<item>wxHTML</item>
+						<item>wxMedia</item>
+						<item>wxNet</item>
+						<item>wxPropertyGrid</item>
+						<item>wxQA</item>
+						<item>wxRibbon</item>
+						<item>wxRichText</item>
+						<item>wxSTC</item>
+						<item>wxWebView</item>
+						<item>wxXML</item>
+						<item>wxXRC</item>
+					</content>
+					<style>wxLB_EXTENDED</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+		<object class="sizeritem">
+			<object class="wxCheckBox" name="chkWxLinkWinSock2">
+				<label>Link with Winsock2 instead Winsock</label>
+				<tooltip>For static build only, needed by wxWidgets 3.1.6+</tooltip>
+			</object>
+			<flag>wxALL</flag>
+			<border>8</border>
+		</object>
+	</object>
+	</object>
+	<object class="wxPanel" name="WxAddLibMono">
+		<object class="wxStaticBoxSizer">
+			<label>Options for project using wxWidgets monolithic build</label>
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxCheckBox" name="chkWxLinkOpenGLMono">
+					<label>Add OpenGL support</label>
+					<tooltip>Link with wxGL and opengl32 libraries</tooltip>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxCheckBox" name="chkWxLinkWinSock2Mono">
+					<label>Link with Winsock2 instead Winsock</label>
+					<tooltip>For static build only, needed by wxWidgets 3.1.6+</tooltip>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="WxProjDetails">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="m_staticText3">
+					<label>Please Enter Project Details. Details will be used in labelling&#x0A;source code of project.</label>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxFlexGridSizer">
+					<cols>2</cols>
+					<rows>3</rows>
+					<vgap>8</vgap>
+					<hgap>8</hgap>
+					<growablecols>1</growablecols>
+					<object class="sizeritem">
+						<object class="wxStaticText" name="m_staticText4">
+							<label>Author:</label>
+						</object>
+						<flag>wxALL</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxTextCtrl" name="txtProjAuthor" />
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxStaticText" name="m_staticText5">
+							<label>Author&apos;s email:</label>
+						</object>
+						<flag>wxALL</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxTextCtrl" name="txtProjEmail" />
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxStaticText" name="m_staticText6">
+							<label>Author&apos;s website:</label>
+						</object>
+						<flag>wxALL</flag>
+					</object>
+					<object class="sizeritem">
+						<object class="wxTextCtrl" name="txtProjWebsite" />
+						<flag>wxALL|wxEXPAND</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+	<object class="wxPanel" name="WxGuiSelect">
+		<object class="wxBoxSizer">
+			<orient>wxVERTICAL</orient>
+			<object class="sizeritem">
+				<object class="wxStaticText" name="StaticWxGuiWelcome">
+					<label>Please select your favourite GUI Builder to use.&#x0A;&#x0A;You can also select the type of application that you want&#x0A; to use in your project.</label>
+				</object>
+				<flag>wxALL</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxRadioBox" name="RB_GUISelect">
+					<label>Preferred GUI Builder</label>
+					<content>
+						<item>None</item>
+						<item>wxSmith (recommended)</item>
+						<item>wxFormBuilder</item>
+					</content>
+					<style>wxRA_SPECIFY_COLS</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxRadioBox" name="RB_GUIAppType">
+					<label>Application Type</label>
+					<content>
+						<item>Dialog Based</item>
+						<item>Frame Based</item>
+						<item>Frame Based (with sample elements, recommended)</item>
+					</content>
+					<style>wxRA_SPECIFY_COLS</style>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<border>8</border>
+			</object>
+		</object>
+	</object>
+</resource>

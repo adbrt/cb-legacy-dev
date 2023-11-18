@@ -1,0 +1,35 @@
+These files should be included in release version.
+
+Installation script should be able to download necessary files
+and build them even if they are not present, but this process takes quite a bit of time
+and there may be some errors at the current stage.
+
+* 7-zip
+
+* CodeBlocks:
+CB_20220619_rev12839_win64.7z
+
+* Dosbox-x:
+dosbox-x-mingw-win64-20220901233004.zip
+
+* Compilers:
+djgpp-mingw-gcc930-standalone.zip
+open-watcom-c-win32-1.9.exe
+x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
+tdm-gcc-4.7.1-2.exe
+
+* Additional files:
+libunicows-1.1.1-mingw32.zip
+Mingw64dlls8.1.0.7z
+wxmsw31u_gcc_cb_wx315_2D_gcc810-mingw64.7z
+
+* Source code for wxWidgets:
+wxMSW-2.8.12.zip
+wxWidgets-3.0.5.zip
+wxWidgets-3.2.1.7z
+
+* Pre-built wxWidgets:
+wxMSW-2.8.12_BCC55_prebuild.7z
+wxMSW-2.8.12_prebuild.7z
+wxWidgets-3.0.5_prebuild.7z
+wxWidgets-3.2.1_mingw64-810_msw64_prebuild.7z

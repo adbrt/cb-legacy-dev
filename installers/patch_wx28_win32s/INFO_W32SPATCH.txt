@@ -1,0 +1,9 @@
+wxWidgets 2.8.12 patched for Win32s/Win3.11 compatibility.
+Changes: 
+- undefined HAVE_TRACKMOUSEEVENT in windows.cpp (was throwing assert - non critical - in Win 3.11)
+- enabled MCI backend in wxMediaCtrl
+- replaced slider95 with older slidermsw implementation, as slider95 was invisible in Win 3.11. Note: range control doesn't work now, even when running under newer systems.
+- disabled antiflicker in wxNotebook, otherwise it wasn't visible in Windows 3.11
+
+Remaining issues:
+- wxStaticBitmap, or loading and displaying bitmaps from files in general doesn't seem to work under Win 3.11 (no image is displayed). However, loading bitmaps from resources does work fine. As a workaround, bitmaps can be loaded from files under Win 3.11 using WinG API (wing32.dll).
